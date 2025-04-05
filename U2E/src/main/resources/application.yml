@@ -9,54 +9,53 @@ spring:
 
 ---
 
-#??? DB
+# 로컬 DB
 spring:
   config:
     activate:
       on-profile: db-local
 
-#  datasource:
-#    url: jdbc:mysql://localhost:3306/U2E
-#    username: ${LOCAL_DB_USER}
-#    password: ${LOCAL_DB_PASSWORD}
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#
-#
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#        dialect: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/U2E
+    username: ${LOCAL_DB_USER}
+    password: ${LOCAL_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
-    datasource:
-      url: jdbc:h2:mem:BookJourneyBackendApplication;MODE=MYSQL;
-      username: sa
-      password:
-      driver-class-name: org.h2.Driver
 
-    h2:
-      console:
-        enabled: true
-
-    jpa:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: true
-      properties:
-        hibernate:
-          format_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+#    datasource:
+#      url: jdbc:h2:mem:U2EApplication;MODE=MYSQL;
+#      username: sa
+#      password:
+#      driver-class-name: org.h2.Driver
+
+#    h2:
+#      console:
+#        enabled: true
+#
+#    jpa:
+#      hibernate:
+#        ddl-auto: update
+#      show-sql: true
+#      properties:
+#        hibernate:
+#          format_sql: true
 
 #  data:
 #    redis:
 #      host: localhost
 #      port: 6379
-
   docker:
     compose:
-      enabled: false  # local ???? Docker Compose ????
+      enabled: false
 
 ---
 #??? DB
@@ -89,7 +88,7 @@ spring:
       enabled: true  # prod ???? Docker Compose ???
 
 ---
-#??? ??
+
 spring:
   config:
     activate:
@@ -101,7 +100,7 @@ server:
     context-path: /
 
 ---
-#??? ??
+
 spring:
   config:
     activate:
@@ -113,7 +112,7 @@ server:
     context-path: /
 
 ---
-#??
+
 spring:
   config:
     activate:
