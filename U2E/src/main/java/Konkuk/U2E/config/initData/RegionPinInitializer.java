@@ -91,8 +91,17 @@ public class RegionPinInitializer {
                         .build();
                 regionRepository.save(region);
 
+                PinColor pinColor;
+                if (i <= 7) {
+                    pinColor = PinColor.RED;
+                } else if (i <= 14) {
+                    pinColor = PinColor.YELLOW;
+                } else {
+                    pinColor = PinColor.GREEN;
+                }
+
                 Pin pin = Pin.builder()
-                        .pinColor(randomColor())
+                        .pinColor(pinColor)
                         .region(region)
                         .build();
                 pinRepository.save(pin);
@@ -104,10 +113,5 @@ public class RegionPinInitializer {
                 newsPinRepository.save(newsPin);
             }
         }
-    }
-
-    private PinColor randomColor() {
-        PinColor[] values = PinColor.values();
-        return values[random.nextInt(values.length)];
     }
 }
