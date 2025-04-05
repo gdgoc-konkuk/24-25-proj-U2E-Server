@@ -2,9 +2,11 @@ package Konkuk.U2E.domain.news.domain;
 
 import Konkuk.U2E.domain.pin.domain.Pin;
 import Konkuk.U2E.domain.pin.domain.PinColor;
+import Konkuk.U2E.domain.pin.domain.Region;
 import Konkuk.U2E.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +28,10 @@ public class NewsPin extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pin_id", nullable = false)
     private Pin pin;
+
+    @Builder
+    public NewsPin(News news, Pin pin) {
+        this.news = news;
+        this.pin = pin;
+    }
 }

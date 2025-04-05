@@ -12,9 +12,12 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements ApplicationRunner {
 
     private final NewsInitializer newsInitializer;
+    private final RegionPinInitializer regionPinInitializer;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         newsInitializer.initializeNews();
+        regionPinInitializer.initializeRegionsAndPins();
+
     }
 }
