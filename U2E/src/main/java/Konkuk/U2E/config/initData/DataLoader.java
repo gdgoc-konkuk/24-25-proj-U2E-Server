@@ -13,11 +13,12 @@ public class DataLoader implements ApplicationRunner {
 
     private final NewsInitializer newsInitializer;
     private final RegionPinInitializer regionPinInitializer;
+    private final CommentUserInitializer commentUserInitializer;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         newsInitializer.initializeNews();
         regionPinInitializer.initializeRegionsAndPins();
-
+        commentUserInitializer.initializeUsersAndComments();
     }
 }
