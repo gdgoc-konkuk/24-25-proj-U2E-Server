@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - PROD_DB_URL=${DEV_DATASOURCE_URL}
-      - PROD_DB_USER=${DEV_DATASOURCE_USERNAME}
-      - PROD_DB_PASSWORD=${DEV_DATASOURCE_PASSWORD}
+      - PROD_DB_URL=${PROD_DB_URL}
+      - PROD_DB_USER=${PROD_DB_USER}
+      - PROD_DB_PASSWORD=${PROD_DB_PASSWORD}
       - TZ=Asia/Seoul
