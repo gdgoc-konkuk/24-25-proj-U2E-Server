@@ -29,11 +29,10 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
-      - name: Set working directory to U2E
-        run: cd U2E
-
       - name: 👏🏻 grant execute permission for gradlew
         run: chmod +x gradlew
+        working-directory: ./U2E
 
       - name: 🐘 build with Gradle (without test)
         run: ./gradlew clean build -x test --stacktrace
+        working-directory: ./U2E
