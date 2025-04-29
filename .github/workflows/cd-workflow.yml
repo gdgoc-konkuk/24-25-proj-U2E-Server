@@ -39,15 +39,18 @@ jobs:
 
       - name: 👏🏻 grant execute permission for gradlew
         run: chmod +x gradlew
+        working-directory: ./U2E
 
       - name: 🐘 build with Gradle (without test)
         run: ./gradlew clean build -x test --stacktrace
+        working-directory: ./U2E
 
       - name: 🐳 Docker build & push
         run:  |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
+        working-directory: ./U2E
 
       - name: 🫴🏻 Get Public IP
         id: ip
@@ -74,8 +77,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_KEY }}
-          source: "./docker-compose.yml"
-          target: "/home/ec2-user/findyou/"
+          source: "./U2E/docker-compose.yml"
+          target: "/home/ec2-user/U2E/"
 
       - name: 🚀 deploy to server
         uses: appleboy/ssh-action@master
@@ -87,7 +90,7 @@ jobs:
           envs: GITHUB_SHA
           script: |
             echo "🗂️ Change Directory to EC2 Root"
-            cd /home/ec2-user/findyou
+            cd /home/ec2-user/U2E
             
             echo "✋🏻Stopping existing container and Cleaning up old images"
             sudo docker compose down --rmi all
