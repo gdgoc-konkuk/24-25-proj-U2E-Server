@@ -37,7 +37,7 @@ jobs:
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
     - name: 👏🏻 grant execute permission for gradlew
-      run: chmod +x gradlew
+      run: chmod +x U2E/gradlew
 
     - name: 🐘 build with Gradle (without test)
-      run: ./gradlew clean build -x test --stacktrace
+      run: U2E/gradlew clean build -x test --stacktrace
