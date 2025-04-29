@@ -3,10 +3,7 @@ package Konkuk.U2E.domain.news.domain;
 import Konkuk.U2E.domain.comment.domain.Comment;
 import Konkuk.U2E.global.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "news")
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class News extends BaseEntity {
 
