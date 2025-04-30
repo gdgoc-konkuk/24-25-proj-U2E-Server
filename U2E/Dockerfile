@@ -1,4 +1,4 @@
-FROM amazoncorretto:17
+FROM amazoncorretto:21
 EXPOSE 8000
 COPY ./build/libs/*.jar ./app.jar
 
