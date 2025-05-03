@@ -12,6 +12,6 @@ import java.util.List;
 public interface NewsPinRepository extends JpaRepository<NewsPin, Long> {
     @Query("SELECT p.region.name FROM NewsPin np " +
             "JOIN np.pin p " +
-            "WHERE np.pin.pinId = p.pinId AND np.news.newsId = :newsId")
+            "WHERE np.news.newsId = :newsId")
     List<String> findRegionNameByNews(@Param("newsId") Long newsId);
 }
