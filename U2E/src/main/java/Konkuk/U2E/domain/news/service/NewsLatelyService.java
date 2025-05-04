@@ -28,12 +28,11 @@ public class NewsLatelyService {
                 .map((latelyNews) -> {
                     List<String> regionNameByNews = newsPinRepository.findRegionNameByNews(latelyNews.getNewsId());
 
-                    List<String> climateProblems = climateRepository.findClimatesByNews(latelyNews).stream()
+                    List<ClimateProblem> climateProblems = climateRepository.findClimatesByNews(latelyNews).stream()
                             .map(Climate::getClimateProblem)
-                            .map(ClimateProblem::getClimateProblem)
                             .toList();
 
-                    return LatelyNews.of(latelyNews.getNewsId(), regionNameByNews, climateProblems, latelyNews.getNewsTitle());
+                    return LatelyNews.of(climateProblems, regionNameByNews, latelyNews);
                 }).toList())
         );
     }
