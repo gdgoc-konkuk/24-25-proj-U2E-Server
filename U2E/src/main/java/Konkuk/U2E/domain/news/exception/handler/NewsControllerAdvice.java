@@ -21,6 +21,6 @@ public class NewsControllerAdvice {
     @ExceptionHandler(NewsNotFoundException.class)
     public BaseErrorResponse handle_NewsNotFoundException(NewsNotFoundException e) {
         log.error("[handle_NewsNotFoundException]", e);
-        return new BaseErrorResponse(BAD_REQUEST, e.getMessage());
+        return new BaseErrorResponse(NEWS_NOT_FOUND, e.getMessage());
     }
 }
