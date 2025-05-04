@@ -7,6 +7,7 @@ import Konkuk.U2E.domain.news.dto.response.LatelyNews;
 import Konkuk.U2E.domain.news.repository.ClimateRepository;
 import Konkuk.U2E.domain.news.repository.NewsPinRepository;
 import Konkuk.U2E.domain.news.repository.NewsRepository;
+import Konkuk.U2E.domain.news.service.mapper.NewsMapperFactory;
 import Konkuk.U2E.global.response.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,23 +19,14 @@ import java.util.List;
 public class NewsLatelyService {
 
     private final NewsRepository newsRepository;
-    private final ClimateRepository climateRepository;
-    private final NewsPinRepository newsPinRepository;
+    private final NewsMapperFactory newsMapperFactory;
 
     //news의 최신 뉴스 5개를 가져오는 서비스
     public BaseResponse<GetLatelyNewsResponse> getLatelyNews() {
-
         return BaseResponse.ok(GetLatelyNewsResponse.of(newsRepository.findTop5ByOrderByNewsDateDesc().stream()
-                .map((latelyNews) -> {
-                    List<String> regionNameByNews = newsPinRepository.findRegionNameByNews(latelyNews.getNewsId());
-
-                    List<ClimateProblem> climateProblems = climateRepository.findClimatesByNews(latelyNews).stream()
-                            .map(Climate::getClimateProblem)
-                            .toList();
-
-                    return LatelyNews.of(climateProblems, regionNameByNews, latelyNews);
-                }).toList())
+                .map(newsMapperFactory.newsMappingFunction())
+                .map(LatelyNews::of)
+                .toList())
         );
     }
-
 }
