@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.BAD_REQUEST;
+import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.NEWS_NOT_FOUND;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
