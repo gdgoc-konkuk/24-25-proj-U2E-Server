@@ -1,4 +1,4 @@
-package Konkuk.U2E.config.initData;
+package Konkuk.U2E.global.config.initData;
 
 import Konkuk.U2E.domain.comment.domain.Comment;
 import Konkuk.U2E.domain.comment.repository.CommentRepository;

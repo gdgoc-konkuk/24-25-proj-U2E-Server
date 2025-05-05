@@ -1,4 +1,4 @@
-package Konkuk.U2E.config.initData;
+package Konkuk.U2E.global.config.initData;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.ApplicationArguments;

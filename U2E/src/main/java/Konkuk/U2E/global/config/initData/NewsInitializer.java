@@ -1,4 +1,4 @@
-package Konkuk.U2E.config.initData;
+package Konkuk.U2E.global.config.initData;
 
 import Konkuk.U2E.domain.news.domain.Climate;
 import Konkuk.U2E.domain.news.domain.ClimateProblem;
