@@ -2,7 +2,6 @@ package Konkuk.U2E.domain.news.exception.handler;
 
 import Konkuk.U2E.domain.news.exception.NewsNotFoundException;
 import Konkuk.U2E.global.response.BaseErrorResponse;
-import Konkuk.U2E.global.response.status.BaseExceptionResponseStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

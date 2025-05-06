@@ -21,11 +21,11 @@ public class NewsController {
 
     @GetMapping("/lately")
     public BaseResponse<GetLatelyNewsResponse> viewLatelyNewsList() {
-        return newsLatelyService.getLatelyNews();
+        return BaseResponse.ok(newsLatelyService.getLatelyNews());
     }
 
     @GetMapping("/{newsId}")
     public BaseResponse<GetNewsInfoResponse> viewNewsInfo(@PathVariable("newsId") final Long newsId) {
-        return newsInfoService.getNewsInfo(newsId);
+        return BaseResponse.ok(newsInfoService.getNewsInfo(newsId));
     }
 }
