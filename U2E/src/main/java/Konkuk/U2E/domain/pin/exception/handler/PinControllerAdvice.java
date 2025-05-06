@@ -20,7 +20,7 @@ import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.NEWS
 public class PinControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(NewsPinNotFoundException.class)
-    public BaseErrorResponse handle_NewsNotFoundException(NewsPinNotFoundException e) {
+    public BaseErrorResponse handle_NewsPinNotFoundException(NewsPinNotFoundException e) {
         log.error("[handle_NewsPinNotFoundException]", e);
         return new BaseErrorResponse(NEWSPIN_NOT_FOUND, e.getMessage());
     }
