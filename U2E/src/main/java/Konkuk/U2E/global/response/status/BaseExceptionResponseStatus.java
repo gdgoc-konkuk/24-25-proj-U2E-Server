@@ -1,7 +1,6 @@
 package Konkuk.U2E.global.response.status;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 
 @RequiredArgsConstructor
 public enum BaseExceptionResponseStatus implements ResponseStatus {
@@ -13,6 +12,8 @@ public enum BaseExceptionResponseStatus implements ResponseStatus {
     NEWS_NOT_FOUND(30000, "알맞은 뉴스를 찾을 수 없습니다."),
 
     NEWSPIN_NOT_FOUND(40000, "핀에 대한 뉴스를 찾을 수 없습니다."),
+
+    DUPLICATE_USER(3000, "중복된 이름입니다."),
 
     INTERNAL_SERVER_ERROR(50000, "서버 내부 오류입니다.")
     ;
