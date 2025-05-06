@@ -5,7 +5,6 @@ import Konkuk.U2E.domain.news.dto.response.GetNewsInfoResponse;
 import Konkuk.U2E.domain.news.exception.NewsNotFoundException;
 import Konkuk.U2E.domain.news.repository.NewsRepository;
 import Konkuk.U2E.domain.news.service.mapper.NewsMapperFactory;
-import Konkuk.U2E.global.response.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

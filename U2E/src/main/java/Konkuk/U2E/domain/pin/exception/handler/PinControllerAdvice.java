@@ -1,6 +1,5 @@
 package Konkuk.U2E.domain.pin.exception.handler;
 
-import Konkuk.U2E.domain.news.exception.NewsNotFoundException;
 import Konkuk.U2E.domain.pin.exception.NewsPinNotFoundException;
 import Konkuk.U2E.global.response.BaseErrorResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.NEWSPIN_NOT_FOUND;
-import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.NEWS_NOT_FOUND;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j

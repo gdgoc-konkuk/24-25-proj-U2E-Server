@@ -1,6 +1,5 @@
 package Konkuk.U2E.domain.pin.controller;
 
-import Konkuk.U2E.domain.news.dto.response.GetNewsInfoResponse;
 import Konkuk.U2E.domain.pin.dto.response.GetPinInfoResponse;
 import Konkuk.U2E.domain.pin.service.PinService;
 import Konkuk.U2E.global.response.BaseResponse;
