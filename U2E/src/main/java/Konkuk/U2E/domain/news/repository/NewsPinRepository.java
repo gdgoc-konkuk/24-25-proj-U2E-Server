@@ -1,5 +1,6 @@
 package Konkuk.U2E.domain.news.repository;
 
+import Konkuk.U2E.domain.news.domain.News;
 import Konkuk.U2E.domain.news.domain.NewsPin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,7 @@ public interface NewsPinRepository extends JpaRepository<NewsPin, Long> {
             "JOIN np.pin p " +
             "WHERE np.news.newsId = :newsId")
     List<String> findRegionNameByNews(@Param("newsId") Long newsId);
+
+    @Query("SELECT np.news FROM NewsPin np WHERE np.pin.pinId = :pinId")
+    List<News> findNewsByPinId(@Param("pinId") Long pinId);
 }
