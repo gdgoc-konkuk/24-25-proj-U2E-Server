@@ -19,10 +19,10 @@ public class NewsInfoService {
     private final NewsMapperFactory newsMapperFactory;
 
     // 뉴스 상세보기
-    public BaseResponse<GetNewsInfoResponse> getNewsInfo(Long newsId) {
+    public GetNewsInfoResponse getNewsInfo(Long newsId) {
         News news = newsRepository.findById(newsId)
                 .orElseThrow(() -> new NewsNotFoundException(NEWS_NOT_FOUND));
 
-        return BaseResponse.ok(GetNewsInfoResponse.of(newsMapperFactory.newsMappingFunction().apply(news)));
+        return GetNewsInfoResponse.of(newsMapperFactory.newsMappingFunction().apply(news));
     }
 }
