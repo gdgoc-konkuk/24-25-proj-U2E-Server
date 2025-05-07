@@ -1,6 +1,7 @@
 package Konkuk.U2E.domain.user.exception.handler;
 
 import Konkuk.U2E.domain.user.exception.DuplicateUserException;
+import Konkuk.U2E.domain.user.exception.InvalidAccessTokenException;
 import Konkuk.U2E.global.response.BaseErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
@@ -22,4 +23,13 @@ public class UserControllerAdvice {
         log.error("[handle_DuplicateUserException]", e);
         return new BaseErrorResponse(DUPLICATE_USER, e.getMessage());
     }
+
+    // 유효하지 않은 액세스 토큰 예외 처리
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(InvalidAccessTokenException.class)
+    public BaseErrorResponse handleInvalidAccessTokenException(InvalidAccessTokenException e) {
+        log.error("[handleInvalidAccessTokenException]", e);
+        return new BaseErrorResponse(e.getExceptionStatus());
+    }
+
 }
