@@ -15,6 +15,8 @@ import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.INVA
 @Slf4j
 public class AuthInterceptor implements HandlerInterceptor {
     private final JwtUtil jwtUtil;
+    private static final String GET_METHOD = "GET";
+    private static final String VIEW_COMMENTS_PATH = "/comments";
 
 
     public AuthInterceptor(JwtUtil jwtUtil) {
@@ -27,7 +29,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         String path = request.getRequestURI();
 
         // 댓글 조회 시 인증 건너뛰기
-        if (method.equals("GET") && path.startsWith("/comment")) {
+        if (method.equals(GET_METHOD) && path.startsWith(VIEW_COMMENTS_PATH)) {
             return true;
         }
 
