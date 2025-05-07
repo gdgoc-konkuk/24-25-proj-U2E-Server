@@ -21,12 +21,8 @@ public class CommentService {
                 .orElseThrow(() -> new NewsNotFoundException(NEWS_NOT_FOUND));
 
         return GetCommentsResponse.of(commentRepository.findCommentsByNewsId(newsId).stream()
-                .map(c -> new CommentInfo(
-                        c.getUser().getUserId(),
-                        c.getUser().getName(),
-                        c.getCommentId(),
-                        c.getContents()
-                )).toList()
+                .map(CommentInfo::of)
+                .toList()
         );
     }
 }
