@@ -27,7 +27,7 @@ public class UserService {
                 .password(req.password())
                 .build());
 
-        String token = jwtUtil.generateAccessToken(newUser.getName(), "USER");
+        String token = jwtUtil.generateAccessToken(newUser.getName());
         return LoginResponse.of(newUser.getUserId(), token);
     }
 }
