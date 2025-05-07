@@ -1,0 +1,46 @@
+package Konkuk.U2E.global.interceptor;
+
+import Konkuk.U2E.domain.user.service.JwtUtil;
+import Konkuk.U2E.domain.user.exception.InvalidAccessTokenException;
+import io.jsonwebtoken.Claims;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.INVALID_ACCESS_TOKEN;
+
+@Component
+@Slf4j
+public class AuthInterceptor implements HandlerInterceptor {
+    private final JwtUtil jwtUtil;
+
+
+    public AuthInterceptor(JwtUtil jwtUtil) {
+        this.jwtUtil = jwtUtil;
+    }
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+        String method = request.getMethod();
+        String path = request.getRequestURI();
+
+        // 댓글 조회 시 인증 건너뛰기
+        if (method.equals("GET") && path.startsWith("/comment")) {
+            return true;
+        }
+
+        String authHeader = request.getHeader("Authorization");
+
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            Claims claims = jwtUtil.validateAccessToken(token);
+            request.setAttribute("username", claims.getSubject());
+            request.setAttribute("role", claims.get("role"));
+            log.info("사용자 {} 인증", request.getAttribute("username"));
+            return true;
+        }
+        throw new InvalidAccessTokenException(INVALID_ACCESS_TOKEN);
+    }
+}
