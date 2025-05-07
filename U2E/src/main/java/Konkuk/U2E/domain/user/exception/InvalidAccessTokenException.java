@@ -1,4 +1,4 @@
-package Konkuk.U2E.global.exception;
+package Konkuk.U2E.domain.user.exception;
 
 import Konkuk.U2E.global.response.status.ResponseStatus;
 import lombok.Getter;
