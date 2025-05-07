@@ -19,6 +19,7 @@ public class UserControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DuplicateUserException.class)
     public BaseErrorResponse handleDuplicateUser(DuplicateUserException e) {
+        log.error("[handle_DuplicateUserException]", e);
         return new BaseErrorResponse(DUPLICATE_USER, e.getMessage());
     }
 }
