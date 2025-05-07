@@ -7,6 +7,9 @@ spring:
       prod: db-prod, port-prod, common
     active: local
 
+jwt:
+  secret: mysecretkey123mysecretkey123mysecretkey123mysecretkey123mysecretkey123mysecretkey123
+  expiration: 3600000
 ---
 
 # 로컬 DB
