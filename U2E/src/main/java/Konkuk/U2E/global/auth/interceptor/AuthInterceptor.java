@@ -1,4 +1,4 @@
-package Konkuk.U2E.global.interceptor;
+package Konkuk.U2E.global.auth.interceptor;
 
 import Konkuk.U2E.domain.user.service.JwtUtil;
 import Konkuk.U2E.domain.user.exception.InvalidAccessTokenException;
@@ -39,7 +39,6 @@ public class AuthInterceptor implements HandlerInterceptor {
             String token = authHeader.substring(7);
             Claims claims = jwtUtil.validateAccessToken(token);
             request.setAttribute("username", claims.getSubject());
-            request.setAttribute("role", claims.get("role"));
             log.info("사용자 {} 인증", request.getAttribute("username"));
             return true;
         }
