@@ -1,7 +1,7 @@
 package Konkuk.U2E.domain.user.controller;
 
-import Konkuk.U2E.domain.user.dto.request.LoginRequest;
-import Konkuk.U2E.domain.user.dto.response.LoginResponse;
+import Konkuk.U2E.domain.user.dto.request.PostUserLoginRequest;
+import Konkuk.U2E.domain.user.dto.response.PostUserLoginResponse;
 import Konkuk.U2E.domain.user.service.UserService;
 import Konkuk.U2E.global.response.BaseResponse;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +18,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/login")
-    public BaseResponse<LoginResponse> login(
-            @RequestBody LoginRequest loginRequest
+    public BaseResponse<PostUserLoginResponse> login(
+            @RequestBody PostUserLoginRequest loginRequest
     ) {
         return BaseResponse.ok(userService.signupAndLogin(loginRequest));
     }
