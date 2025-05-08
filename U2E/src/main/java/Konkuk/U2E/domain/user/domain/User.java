@@ -1,6 +1,5 @@
 package Konkuk.U2E.domain.user.domain;
 
-import Konkuk.U2E.domain.news.domain.News;
 import Konkuk.U2E.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -25,14 +24,9 @@ public class User extends BaseEntity {
     @Column(name = "password", length = 100)
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "news_id", nullable = false)
-    private News news;
-
     @Builder
-    public User(String name, String password, News news) {
+    public User(String name, String password) {
         this.name = name;
         this.password = password;
-        this.news = news;
     }
 }

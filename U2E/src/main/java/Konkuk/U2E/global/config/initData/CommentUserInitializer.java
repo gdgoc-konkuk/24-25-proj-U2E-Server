@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
@@ -17,8 +16,6 @@ public class CommentUserInitializer {
     private final NewsInitializer newsInitializer;
     private final UserRepository userRepository;
     private final CommentRepository commentRepository;
-
-    private final Random random = new Random();
 
     private final List<String> usernames = List.of(
             "홍길동", "김철수", "이영희", "박지민", "정우성",
@@ -43,7 +40,6 @@ public class CommentUserInitializer {
                     User.builder()
                             .name(usernames.get((i * 2) % usernames.size()))
                             .password("test1234")
-                            .news(news)
                             .build()
             );
 
@@ -51,7 +47,6 @@ public class CommentUserInitializer {
                     User.builder()
                             .name(usernames.get((i * 2 + 1) % usernames.size()))
                             .password("test1234")
-                            .news(news)
                             .build()
             );
 
