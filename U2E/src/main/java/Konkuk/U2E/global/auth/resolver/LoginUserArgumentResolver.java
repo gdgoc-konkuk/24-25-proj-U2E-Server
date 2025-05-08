@@ -25,6 +25,6 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
                                   WebDataBinderFactory binderFactory) throws Exception {
         HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
 
-        return request.getAttribute("username");
+        return  (String) request.getAttribute("username");
     }
 }
