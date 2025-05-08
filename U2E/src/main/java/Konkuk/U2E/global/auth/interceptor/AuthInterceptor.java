@@ -33,15 +33,19 @@ public class AuthInterceptor implements HandlerInterceptor {
             return true;
         }
 
-        String authHeader = request.getHeader("Authorization");
+        String token = request.getHeader("Authorization");
 
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            String token = authHeader.substring(7);
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+
+        if (token != null) {
             Claims claims = jwtUtil.validateAccessToken(token);
             request.setAttribute("username", claims.getSubject());
             log.info("사용자 {} 인증", request.getAttribute("username"));
             return true;
         }
+
         throw new InvalidAccessTokenException(INVALID_ACCESS_TOKEN);
     }
 }
