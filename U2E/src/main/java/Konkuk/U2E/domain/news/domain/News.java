@@ -30,7 +30,8 @@ public class News extends BaseEntity {
     @Column(name = "news_title", nullable = false, length = 200)
     private String newsTitle;
 
-    @Column(name = "news_body", nullable = false, length = 1000)
+    @Lob
+    @Column(name = "news_body", nullable = false, columnDefinition = "LONGTEXT")
     private String newsBody;
 
     @Column(name = "news_date", nullable = false)
