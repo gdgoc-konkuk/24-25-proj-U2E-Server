@@ -4,7 +4,6 @@ import Konkuk.U2E.domain.news.domain.News;
 import Konkuk.U2E.domain.news.domain.NewsPin;
 import Konkuk.U2E.domain.news.repository.NewsPinRepository;
 import Konkuk.U2E.domain.pin.domain.Pin;
-import Konkuk.U2E.domain.pin.domain.PinColor;
 import Konkuk.U2E.domain.pin.domain.Region;
 import Konkuk.U2E.domain.pin.repository.PinRepository;
 import Konkuk.U2E.domain.pin.repository.RegionRepository;
@@ -91,17 +90,7 @@ public class RegionPinInitializer {
                         .build();
                 regionRepository.save(region);
 
-                PinColor pinColor;
-                if (i <= 7) {
-                    pinColor = PinColor.RED;
-                } else if (i <= 14) {
-                    pinColor = PinColor.YELLOW;
-                } else {
-                    pinColor = PinColor.GREEN;
-                }
-
                 Pin pin = Pin.builder()
-                        .pinColor(pinColor)
                         .region(region)
                         .build();
                 pinRepository.save(pin);

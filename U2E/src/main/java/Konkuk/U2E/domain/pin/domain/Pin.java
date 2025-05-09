@@ -18,17 +18,12 @@ public class Pin extends BaseEntity {
     @Column(name = "pin_id")
     private Long pinId;
 
-    @Column(name = "pin_color", nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private PinColor pinColor;
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id", nullable = false)
     private Region region;
 
     @Builder
-    public Pin(PinColor pinColor, Region region) {
-        this.pinColor = pinColor;
+    public Pin(Region region) {
         this.region = region;
     }
 }
