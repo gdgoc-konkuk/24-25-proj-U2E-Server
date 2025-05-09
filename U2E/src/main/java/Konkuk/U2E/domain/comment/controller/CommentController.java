@@ -16,13 +16,13 @@ public class CommentController {
     private final CommentService commentService;
 
     @GetMapping("/{newsId}")
-    public BaseResponse<GetCommentsResponse> viewComments(@PathVariable("newsId") Long newsId) {
+    public BaseResponse<GetCommentsResponse> getComments(@PathVariable("newsId") Long newsId) {
         return BaseResponse.ok(commentService.getCommentInfo(newsId));
     }
 
     @PostMapping
-    public BaseResponse createComments(@LoginUser String username, @RequestBody PostCommentCreateRequest request) {
+    public BaseResponse<Void> postComments(@LoginUser String username, @RequestBody PostCommentCreateRequest request) {
         commentService.createComment(username, request);
-        return BaseResponse.ok();
+        return BaseResponse.ok(null);
     }
 }
