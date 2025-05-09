@@ -18,16 +18,29 @@ public class CommentUserInitializer {
     private final CommentRepository commentRepository;
 
     private final List<String> usernames = List.of(
-            "홍길동", "김철수", "이영희", "박지민", "정우성",
-            "한지민", "이민호", "김태희", "유재석", "아이유"
+            "Gil-dong Hong",
+            "Chul-soo Kim",
+            "Young-hee Lee",
+            "Ji-min Park",
+            "Woo-sung Jung",
+            "Ji-min Han",
+            "Min-ho Lee",
+            "Tae-hee Kim",
+            "Jae-suk Yoo",
+            "IU"
     );
 
     private final List<String> comments = List.of(
-            "정말 충격적인 기사네요.", "이런 일이 다시는 없었으면 좋겠어요.",
-            "기후 변화가 이렇게 심각한 줄 몰랐네요.", "좋은 정보 감사합니다!",
-            "정부의 대응이 아쉽습니다.", "더 많은 대책이 필요해 보여요.",
-            "지역 주민들이 걱정되네요.", "이런 뉴스가 더 많이 알려져야 해요.",
-            "환경 보호의 중요성을 느낍니다.", "다들 조심하세요!"
+            "This is truly shocking news.",
+            "I hope something like this never happens again.",
+            "I didn't realize climate change was this serious.",
+            "Thanks for the helpful information!",
+            "The government's response is disappointing.",
+            "It seems like more measures are needed.",
+            "I'm worried about the local residents.",
+            "More people need to be aware of news like this.",
+            "This really highlights the importance of environmental protection.",
+            "Stay safe, everyone!"
     );
 
     public void initializeUsersAndComments() {
