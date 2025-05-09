@@ -6,7 +6,7 @@ import Konkuk.U2E.domain.news.repository.ClimateRepository;
 import Konkuk.U2E.domain.news.repository.NewsPinRepository;
 import Konkuk.U2E.domain.pin.dto.response.GetPinInfoResponse;
 import Konkuk.U2E.domain.pin.dto.response.NewsInfo;
-import Konkuk.U2E.domain.pin.exception.NewsPinNotFoundException;
+import Konkuk.U2E.domain.pin.exception.PinNewsNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,14 +16,14 @@ import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.*;
 
 @Service
 @RequiredArgsConstructor
-public class PinService {
+public class PinInfoService {
     private final NewsPinRepository newsPinRepository;
     private final ClimateRepository climateRepository;
 
     public GetPinInfoResponse getPinInfo(Long pinId) {
         List<News> newsList = newsPinRepository.findNewsByPinId(pinId);
         if (newsList.isEmpty()) {
-            throw new NewsPinNotFoundException(NEWSPIN_NOT_FOUND);
+            throw new PinNewsNotFoundException(PINNEWS_NOT_FOUND);
         }
         return GetPinInfoResponse.of(newsList.stream()
                 .map(news -> NewsInfo.of(climateRepository.findClimatesByNews(news).stream()
@@ -33,4 +33,6 @@ public class PinService {
                 .toList()
         );
     }
+
+
 }
