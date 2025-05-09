@@ -78,33 +78,35 @@ public class RegionPinInitializer {
     public void initializeRegionsAndPins() {
         List<News> newsList = newsInitializer.getNewsList();
 
+        Map<String, Region> regionMap = new java.util.HashMap<>();
+        Map<String, Pin> pinMap = new java.util.HashMap<>();
+
         for (int i = 0; i < newsList.size(); i++) {
             News news = newsList.get(i);
 
             for (String regionName : regionNamesPerNews.get(i)) {
-                BigDecimal[] coords = regionCoordinates.get(regionName);
-
-                Region region = Region.builder()
-                        .name(regionName)
-                        .latitude(coords[0])
-                        .longitude(coords[1])
-                        .build();
-                regionRepository.save(region);
+                Region region = regionMap.computeIfAbsent(regionName, name -> {
+                    BigDecimal[] coords = regionCoordinates.get(name);
+                    Region newRegion = Region.builder()
+                            .name(name)
+                            .latitude(coords[0])
+                            .longitude(coords[1])
+                            .build();
+                    return regionRepository.save(newRegion);
+                });
 
                 PinColor pinColor;
-                if (i <= 7) {
-                    pinColor = PinColor.RED;
-                } else if (i <= 14) {
-                    pinColor = PinColor.YELLOW;
-                } else {
-                    pinColor = PinColor.GREEN;
-                }
+                if (i <= 7) pinColor = PinColor.RED;
+                else if (i <= 14) pinColor = PinColor.YELLOW;
+                else pinColor = PinColor.GREEN;
 
-                Pin pin = Pin.builder()
-                        .pinColor(pinColor)
-                        .region(region)
-                        .build();
-                pinRepository.save(pin);
+                Pin pin = pinMap.computeIfAbsent(regionName, name -> {
+                    Pin newPin = Pin.builder()
+                            .pinColor(pinColor) // 외부에서 계산된 값을 사용
+                            .region(region)
+                            .build();
+                    return pinRepository.save(newPin);
+                });
 
                 NewsPin newsPin = NewsPin.builder()
                         .news(news)
