@@ -9,16 +9,15 @@ public enum BaseExceptionResponseStatus implements ResponseStatus {
     BAD_REQUEST(40000, "유효하지 않은 요청입니다."),
     NOT_FOUND(40400, "존재하지 않는 API입니다."),
 
-    COMMENT_CREATE_FAILED(30000, "댓글 작성하는데에 실패하였습니다."),
+    COMMENT_OF_NEWS_NOT_FOUND(30000, "댓글에 대한 뉴스를 찾을 수 없습니다."),
 
-    NEWS_NOT_FOUND(30000, "알맞은 뉴스를 찾을 수 없습니다."),
+    NEWS_NOT_FOUND(31000, "알맞은 뉴스를 찾을 수 없습니다."),
 
     NEWSPIN_NOT_FOUND(40000, "핀에 대한 뉴스를 찾을 수 없습니다."),
 
-    DUPLICATE_USER(30000, "중복된 아이디 입니다."),
-    USER_NOT_FOUND(30000, "존재하지 않는 유저입니다."),
+    DUPLICATE_USER(32000, "중복된 아이디 입니다."),
+    INVALID_ACCESS_TOKEN(32001, "유효하지 않은 액세스 토큰입니다."),
 
-    INVALID_ACCESS_TOKEN(3000, "유효하지 않은 액세스 토큰입니다."),
     INTERNAL_SERVER_ERROR(50000, "서버 내부 오류입니다.")
     ;
 

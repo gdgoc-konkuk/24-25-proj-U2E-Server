@@ -2,7 +2,6 @@ package Konkuk.U2E.domain.user.exception.handler;
 
 import Konkuk.U2E.domain.user.exception.DuplicateUserException;
 import Konkuk.U2E.domain.user.exception.InvalidAccessTokenException;
-import Konkuk.U2E.domain.user.exception.UserNotFoundException;
 import Konkuk.U2E.global.response.BaseErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
@@ -31,12 +30,5 @@ public class UserControllerAdvice {
     public BaseErrorResponse handleInvalidAccessTokenException(InvalidAccessTokenException e) {
         log.error("[handleInvalidAccessTokenException]", e);
         return new BaseErrorResponse(INVALID_ACCESS_TOKEN, e.getMessage());
-    }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(UserNotFoundException.class)
-    public BaseErrorResponse handleUserNotFountException(UserNotFoundException e) {
-        log.error("[handleUserNotFountException]", e);
-        return new BaseErrorResponse(USER_NOT_FOUND, e.getMessage());
     }
 }
