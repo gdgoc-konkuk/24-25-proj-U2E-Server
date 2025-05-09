@@ -1,5 +1,6 @@
 package Konkuk.U2E.domain.pin.exception.handler;
 
+import Konkuk.U2E.domain.pin.exception.ClimateNotFoundException;
 import Konkuk.U2E.domain.pin.exception.NewsPinNotFoundException;
 import Konkuk.U2E.domain.pin.exception.InvalidParamException;
 import Konkuk.U2E.domain.pin.exception.PinNewsNotFoundException;
@@ -37,5 +38,12 @@ public class PinControllerAdvice {
     public BaseErrorResponse handle_NewsNotFoundException(NewsPinNotFoundException e) {
         log.error("[handle_NewsPinNotFoundException]", e);
         return new BaseErrorResponse(NEWSPIN_NOT_FOUND, e.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ClimateNotFoundException.class)
+    public BaseErrorResponse handle_ClimateNotFoundException(ClimateNotFoundException e) {
+        log.error("[handle_ClimateNotFoundException]", e);
+        return new BaseErrorResponse(CLIMATE_NOT_FOUND, e.getMessage());
     }
 }

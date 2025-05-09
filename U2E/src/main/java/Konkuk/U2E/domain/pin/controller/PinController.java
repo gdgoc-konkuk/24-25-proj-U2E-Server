@@ -1,6 +1,5 @@
 package Konkuk.U2E.domain.pin.controller;
 
-import Konkuk.U2E.domain.news.domain.ClimateProblem;
 import Konkuk.U2E.domain.pin.dto.response.GetPinInfoResponse;
 import Konkuk.U2E.domain.pin.dto.response.GetPinListResponse;
 import Konkuk.U2E.domain.pin.service.PinInfoService;
@@ -26,9 +25,9 @@ public class PinController {
     @GetMapping
     public BaseResponse<GetPinListResponse> viewPinList(
             @RequestParam(value = "region", required = false) String region,
-            @RequestParam(value = "climate", required = false) ClimateProblem climateProblem,
+            @RequestParam(value = "climate", required = false) String climate,
             @RequestParam(value = "newsId", required = false) Long newsId
             ) {
-        return BaseResponse.ok(pinListService.getPinList(region, climateProblem, newsId));
+        return BaseResponse.ok(pinListService.getPinList(region, climate, newsId));
     }
 }

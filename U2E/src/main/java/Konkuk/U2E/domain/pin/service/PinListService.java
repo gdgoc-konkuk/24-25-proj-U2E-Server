@@ -36,23 +36,24 @@ public class PinListService {
 
     private final DateUtil dateUtil;
 
-    public GetPinListResponse getPinList(String region, ClimateProblem climateProblem, Long newsId) {
+    public GetPinListResponse getPinList(String region, String climate, Long newsId) {
         //경우 나누기
         //1. 핀 전체 조회 (모든 파라미터 null)
         //2. 지역으로 핀 검색 (region)
         //3. 기후로 핀 필터링 (climate)
         //4. 최신 뉴스 카드 핀 조회 (newsId)
-        if (region == null && climateProblem == null && newsId == null) {
+        if (region == null && climate == null && newsId == null) {
             return GetPinListResponse.of(getPinListByAll());
         }
-        if (region != null && climateProblem == null && newsId == null) {
+        if (region != null && climate == null && newsId == null) {
 //            return GetPinListResponse.of(getPinListByRegion(region));
             return null;
         }
-        if (region == null && climateProblem != null && newsId == null) {
+        if (region == null && climate != null && newsId == null) {
+            ClimateProblem climateProblem = ClimateProblem.fromString(climate);
             return GetPinListResponse.of(getPinListByClimate(climateProblem));
         }
-        if (region == null && climateProblem == null && newsId != null) {
+        if (region == null && climate == null && newsId != null) {
             return GetPinListResponse.of(getPinListByNewsId(newsId));
         }
 
