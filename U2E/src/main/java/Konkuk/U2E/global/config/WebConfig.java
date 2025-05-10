@@ -25,7 +25,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**") // 백엔드 API 경로
                 .allowedOrigins(
                         "http://localhost:5173",
-                        "https://us2earth-two.vercel.app"
+                        "https://us2earth-two.vercel.app",
+                        "https://us2earth.click/swagger-ui/index.html"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowCredentials(true)
