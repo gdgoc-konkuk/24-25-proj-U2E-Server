@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PinRepository extends JpaRepository<Pin, Long> {
-    Pin findByRegion(Region region);
+    Pin findPinByRegion(Region region);
 }

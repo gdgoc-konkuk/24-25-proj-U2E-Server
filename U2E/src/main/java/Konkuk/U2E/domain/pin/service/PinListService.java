@@ -67,8 +67,8 @@ public class PinListService {
     }
 
     private List<PinInfo> getPinListByRegion(String regionName) {
-        Optional<Region> regionOptional = regionRepository.findByName(regionName);
-        return regionOptional.map(region -> List.of(createPinInfo(pinRepository.findByRegion(region))))
+        Optional<Region> regionOptional = regionRepository.findRegionByName(regionName);
+        return regionOptional.map(region -> List.of(createPinInfo(pinRepository.findPinByRegion(region))))
                 .orElseGet(List::of);
     }
 
