@@ -1,6 +1,9 @@
 package Konkuk.U2E.domain.news.domain;
 
+import Konkuk.U2E.domain.pin.exception.ClimateNotFoundException;
 import lombok.Getter;
+
+import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.*;
 
 @Getter
 public enum ClimateProblem {
@@ -23,5 +26,14 @@ public enum ClimateProblem {
 
     ClimateProblem(String climateProblem) {
         this.climateProblem = climateProblem;
+    }
+
+    public static ClimateProblem fromString(String climate) {
+        for (ClimateProblem climateProblem : ClimateProblem.values()) {
+            if (climateProblem.toString().equals(climate)) {
+                return climateProblem;
+            }
+        }
+        throw new ClimateNotFoundException(CLIMATE_NOT_FOUND);
     }
 }

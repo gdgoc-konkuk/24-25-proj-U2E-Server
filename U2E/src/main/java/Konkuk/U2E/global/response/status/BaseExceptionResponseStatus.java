@@ -11,7 +11,10 @@ public enum BaseExceptionResponseStatus implements ResponseStatus {
 
     NEWS_NOT_FOUND(30000, "알맞은 뉴스를 찾을 수 없습니다."),
 
-    NEWSPIN_NOT_FOUND(40000, "핀에 대한 뉴스를 찾을 수 없습니다."),
+    PINNEWS_NOT_FOUND(40000, "핀에 대한 뉴스를 찾을 수 없습니다."),
+    NEWSPIN_NOT_FOUND(40001, "뉴스에 대한 핀을 찾을 수 없습니다."),
+    INVALID_PARAM(40002, "유효하지 않은 파라미터입니다."),
+    CLIMATE_NOT_FOUND(40003, "매칭되는 기후 뉴스를 찾을 수 없습니다."),
 
     DUPLICATE_USER(3000, "중복된 아이디 입니다."),
 
