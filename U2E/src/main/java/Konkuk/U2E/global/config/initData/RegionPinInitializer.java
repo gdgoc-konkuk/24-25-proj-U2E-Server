@@ -4,7 +4,6 @@ import Konkuk.U2E.domain.news.domain.News;
 import Konkuk.U2E.domain.news.domain.NewsPin;
 import Konkuk.U2E.domain.news.repository.NewsPinRepository;
 import Konkuk.U2E.domain.pin.domain.Pin;
-import Konkuk.U2E.domain.pin.domain.PinColor;
 import Konkuk.U2E.domain.pin.domain.Region;
 import Konkuk.U2E.domain.pin.repository.PinRepository;
 import Konkuk.U2E.domain.pin.repository.RegionRepository;
@@ -95,18 +94,10 @@ public class RegionPinInitializer {
                     return regionRepository.save(newRegion);
                 });
 
-                PinColor pinColor;
-                if (i <= 7) pinColor = PinColor.RED;
-                else if (i <= 14) pinColor = PinColor.YELLOW;
-                else pinColor = PinColor.GREEN;
-
-                Pin pin = pinMap.computeIfAbsent(regionName, name -> {
-                    Pin newPin = Pin.builder()
-                            .pinColor(pinColor) // 외부에서 계산된 값을 사용
-                            .region(region)
-                            .build();
-                    return pinRepository.save(newPin);
-                });
+                Pin pin = Pin.builder()
+                        .region(region)
+                        .build();
+                pinRepository.save(pin);
 
                 NewsPin newsPin = NewsPin.builder()
                         .news(news)

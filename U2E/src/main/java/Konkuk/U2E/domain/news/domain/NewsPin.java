@@ -1,8 +1,6 @@
 package Konkuk.U2E.domain.news.domain;
 
 import Konkuk.U2E.domain.pin.domain.Pin;
-import Konkuk.U2E.domain.pin.domain.PinColor;
-import Konkuk.U2E.domain.pin.domain.Region;
 import Konkuk.U2E.global.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
