@@ -25,70 +25,74 @@ public class RegionPinInitializer {
     private final Random random = new Random();
 
     private final List<List<String>> regionNamesPerNews = List.of(
-            List.of("런던", "로스앤젤레스", "대한민국"),
-            List.of("인도"),
-            List.of("도싯"),
-            List.of("데번", "콘월", "뱀프턴"),
-            List.of("대한민국", "의성군"),
-            List.of("대한민국"),
-            List.of("영국"),
-            List.of("영국", "데번"),
-            List.of("대한민국"),
-            List.of("대한민국"),
-            List.of("영국", "마스덴", "덴홈"),
-            List.of("영국", "인버네스", "쿨더셀"),
-            List.of("영국", "볼링"),
-            List.of("영국", "샙"),
-            List.of("영국", "도싯"),
-            List.of("영국", "웨일스"),
-            List.of("영국", "북아일랜드"),
-            List.of("영국", "스코틀랜드"),
-            List.of("미주리", "텍사스", "오클라호마"),
-            List.of("컴브리아", "워킹턴")
+            List.of("London", "Los Angeles", "South Korea"),
+            List.of("India"),
+            List.of("Dorset"),
+            List.of("Devon", "Cornwall", "Bampton"),
+            List.of("South Korea", "Uiseong County"),
+            List.of("South Korea"),
+            List.of("United Kingdom"),
+            List.of("United Kingdom", "Devon"),
+            List.of("South Korea"),
+            List.of("South Korea"),
+            List.of("United Kingdom", "Marsden", "Denholme"),
+            List.of("United Kingdom", "Inverness", "Culdershell"),
+            List.of("United Kingdom", "Bowling"),
+            List.of("United Kingdom", "Shap"),
+            List.of("United Kingdom", "Dorset"),
+            List.of("United Kingdom", "Wales"),
+            List.of("United Kingdom", "Northern Ireland"),
+            List.of("United Kingdom", "Scotland"),
+            List.of("Missouri", "Texas", "Oklahoma"),
+            List.of("Cumbria", "Workington")
     );
 
     private final Map<String, BigDecimal[]> regionCoordinates = Map.ofEntries(
-            Map.entry("런던", new BigDecimal[]{new BigDecimal("51.5072"), new BigDecimal("0.1276")}),
-            Map.entry("로스앤젤레스", new BigDecimal[]{new BigDecimal("34.0522"), new BigDecimal("118.2437")}),
-            Map.entry("대한민국", new BigDecimal[]{new BigDecimal("35.9078"), new BigDecimal("127.7669")}),
-            Map.entry("인도", new BigDecimal[]{new BigDecimal("20.5937"), new BigDecimal("78.9629")}),
-            Map.entry("도싯", new BigDecimal[]{new BigDecimal("50.7488"), new BigDecimal("2.3445")}),
-            Map.entry("데번", new BigDecimal[]{new BigDecimal("50.7184"), new BigDecimal("-3.5339")}),
-            Map.entry("콘월", new BigDecimal[]{new BigDecimal("50.2653"), new BigDecimal("-5.0547")}),
-            Map.entry("뱀프턴", new BigDecimal[]{new BigDecimal("51.0152"), new BigDecimal("-3.4874")}),
-            Map.entry("의성군", new BigDecimal[]{new BigDecimal("36.3526"), new BigDecimal("128.6977")}),
-            Map.entry("영국", new BigDecimal[]{new BigDecimal("51.4590"), new BigDecimal("-2.1190")}),
-            Map.entry("마스덴", new BigDecimal[]{new BigDecimal("53.6102"), new BigDecimal("-1.9552")}),
-            Map.entry("덴홈", new BigDecimal[]{new BigDecimal("53.7940"), new BigDecimal("-1.8950")}),
-            Map.entry("인버네스", new BigDecimal[]{new BigDecimal("57.4778"), new BigDecimal("-4.2247")}),
-            Map.entry("쿨더셀", new BigDecimal[]{new BigDecimal("57.4547"), new BigDecimal("-4.2252")}),
-            Map.entry("볼링", new BigDecimal[]{new BigDecimal("55.9300"), new BigDecimal("-4.4840")}),
-            Map.entry("샙", new BigDecimal[]{new BigDecimal("54.5262"), new BigDecimal("-2.6771")}),
-            Map.entry("웨일스", new BigDecimal[]{new BigDecimal("51.6563"), new BigDecimal("-3.4261")}),
-            Map.entry("북아일랜드", new BigDecimal[]{new BigDecimal("54.6000"), new BigDecimal("-6.7500")}),
-            Map.entry("스코틀랜드", new BigDecimal[]{new BigDecimal("56.4907"), new BigDecimal("-4.2026")}),
-            Map.entry("미주리", new BigDecimal[]{new BigDecimal("38.5739"), new BigDecimal("-92.6038")}),
-            Map.entry("텍사스", new BigDecimal[]{new BigDecimal("31.9686"), new BigDecimal("-99.9018")}),
-            Map.entry("오클라호마", new BigDecimal[]{new BigDecimal("35.4676"), new BigDecimal("-97.5164")}),
-            Map.entry("컴브리아", new BigDecimal[]{new BigDecimal("54.5770"), new BigDecimal("-2.7975")}),
-            Map.entry("워킹턴", new BigDecimal[]{new BigDecimal("54.6422"), new BigDecimal("-3.5445")})
+            Map.entry("London", new BigDecimal[]{new BigDecimal("51.5072"), new BigDecimal("0.1276")}),
+            Map.entry("Los Angeles", new BigDecimal[]{new BigDecimal("34.0522"), new BigDecimal("118.2437")}),
+            Map.entry("South Korea", new BigDecimal[]{new BigDecimal("35.9078"), new BigDecimal("127.7669")}),
+            Map.entry("India", new BigDecimal[]{new BigDecimal("20.5937"), new BigDecimal("78.9629")}),
+            Map.entry("Dorset", new BigDecimal[]{new BigDecimal("50.7488"), new BigDecimal("2.3445")}),
+            Map.entry("Devon", new BigDecimal[]{new BigDecimal("50.7184"), new BigDecimal("-3.5339")}),
+            Map.entry("Cornwall", new BigDecimal[]{new BigDecimal("50.2653"), new BigDecimal("-5.0547")}),
+            Map.entry("Bampton", new BigDecimal[]{new BigDecimal("51.0152"), new BigDecimal("-3.4874")}),
+            Map.entry("Uiseong County", new BigDecimal[]{new BigDecimal("36.3526"), new BigDecimal("128.6977")}),
+            Map.entry("United Kingdom", new BigDecimal[]{new BigDecimal("51.4590"), new BigDecimal("-2.1190")}),
+            Map.entry("Marsden", new BigDecimal[]{new BigDecimal("53.6102"), new BigDecimal("-1.9552")}),
+            Map.entry("Denholme", new BigDecimal[]{new BigDecimal("53.7940"), new BigDecimal("-1.8950")}),
+            Map.entry("Inverness", new BigDecimal[]{new BigDecimal("57.4778"), new BigDecimal("-4.2247")}),
+            Map.entry("Culdershell", new BigDecimal[]{new BigDecimal("57.4547"), new BigDecimal("-4.2252")}), // 원지명 불확실
+            Map.entry("Bowling", new BigDecimal[]{new BigDecimal("55.9300"), new BigDecimal("-4.4840")}),
+            Map.entry("Shap", new BigDecimal[]{new BigDecimal("54.5262"), new BigDecimal("-2.6771")}),
+            Map.entry("Wales", new BigDecimal[]{new BigDecimal("51.6563"), new BigDecimal("-3.4261")}),
+            Map.entry("Northern Ireland", new BigDecimal[]{new BigDecimal("54.6000"), new BigDecimal("-6.7500")}),
+            Map.entry("Scotland", new BigDecimal[]{new BigDecimal("56.4907"), new BigDecimal("-4.2026")}),
+            Map.entry("Missouri", new BigDecimal[]{new BigDecimal("38.5739"), new BigDecimal("-92.6038")}),
+            Map.entry("Texas", new BigDecimal[]{new BigDecimal("31.9686"), new BigDecimal("-99.9018")}),
+            Map.entry("Oklahoma", new BigDecimal[]{new BigDecimal("35.4676"), new BigDecimal("-97.5164")}),
+            Map.entry("Cumbria", new BigDecimal[]{new BigDecimal("54.5770"), new BigDecimal("-2.7975")}),
+            Map.entry("Workington", new BigDecimal[]{new BigDecimal("54.6422"), new BigDecimal("-3.5445")})
     );
 
     public void initializeRegionsAndPins() {
         List<News> newsList = newsInitializer.getNewsList();
 
+        Map<String, Region> regionMap = new java.util.HashMap<>();
+        Map<String, Pin> pinMap = new java.util.HashMap<>();
+
         for (int i = 0; i < newsList.size(); i++) {
             News news = newsList.get(i);
 
             for (String regionName : regionNamesPerNews.get(i)) {
-                BigDecimal[] coords = regionCoordinates.get(regionName);
-
-                Region region = Region.builder()
-                        .name(regionName)
-                        .latitude(coords[0])
-                        .longitude(coords[1])
-                        .build();
-                regionRepository.save(region);
+                Region region = regionMap.computeIfAbsent(regionName, name -> {
+                    BigDecimal[] coords = regionCoordinates.get(name);
+                    Region newRegion = Region.builder()
+                            .name(name)
+                            .latitude(coords[0])
+                            .longitude(coords[1])
+                            .build();
+                    return regionRepository.save(newRegion);
+                });
 
                 Pin pin = Pin.builder()
                         .region(region)

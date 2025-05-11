@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.DUPLICATE_USER;
-import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.INVALID_ACCESS_TOKEN;
+import static Konkuk.U2E.global.response.status.BaseExceptionResponseStatus.*;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Slf4j
@@ -32,5 +31,4 @@ public class UserControllerAdvice {
         log.error("[handleInvalidAccessTokenException]", e);
         return new BaseErrorResponse(INVALID_ACCESS_TOKEN, e.getMessage());
     }
-
 }
