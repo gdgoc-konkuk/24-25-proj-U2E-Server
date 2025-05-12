@@ -94,10 +94,10 @@ public class RegionPinInitializer {
                     return regionRepository.save(newRegion);
                 });
 
-                Pin pin = Pin.builder()
-                        .region(region)
-                        .build();
-                pinRepository.save(pin);
+                Pin pin = pinMap.computeIfAbsent(regionName, name -> {
+                    Pin newPin = Pin.builder().region(region).build();
+                    return pinRepository.save(newPin);
+                });
 
                 NewsPin newsPin = NewsPin.builder()
                         .news(news)
