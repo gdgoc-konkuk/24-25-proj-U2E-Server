@@ -27,7 +27,40 @@ public class CommentUserInitializer {
             "Min-ho Lee",
             "Tae-hee Kim",
             "Jae-suk Yoo",
-            "IU"
+            "IU",
+
+            "Soo-jin Choi",
+            "Hyun-woo Kang",
+            "Seul-gi Yoon",
+            "Hye-jin Jang",
+            "Dae-hoon Lim",
+            "Jin-young Bae",
+            "Yuna Kim",
+            "Hae-jin Lee",
+            "Bo-gum Park",
+            "Na-yeon Son",
+
+            "John Smith",
+            "Emily Johnson",
+            "Michael Brown",
+            "Olivia Davis",
+            "David Wilson",
+            "Sophia Martinez",
+            "James Anderson",
+            "Isabella Garcia",
+            "Daniel Thomas",
+            "Emma Rodriguez",
+
+            "William Lee",
+            "Ava Kim",
+            "Henry Nguyen",
+            "Charlotte Chen",
+            "Liam Patel",
+            "Amelia Park",
+            "Noah Zhao",
+            "Mia Wang",
+            "Ethan Choi",
+            "Grace Jeong"
     );
 
     private final List<String> comments = List.of(
@@ -44,6 +77,8 @@ public class CommentUserInitializer {
     );
 
     public void initializeUsersAndComments() {
+        if (commentRepository.count() > 0 && userRepository.count() > 0) return;
+
         List<News> newsList = newsInitializer.getNewsList();
 
         for (int i = 0; i < newsList.size(); i++) {
