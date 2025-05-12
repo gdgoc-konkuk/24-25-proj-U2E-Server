@@ -46,8 +46,7 @@ public class PinListService {
             return GetPinListResponse.of(getPinListByAll());
         }
         if (region != null && climate == null && newsId == null) {
-//            return GetPinListResponse.of(getPinListByRegion(region));
-            return null;
+            return GetPinListResponse.of(getPinListByRegion(region));
         }
         if (region == null && climate != null && newsId == null) {
             ClimateProblem climateProblem = ClimateProblem.fromString(climate);
@@ -67,9 +66,11 @@ public class PinListService {
     }
 
     private List<PinInfo> getPinListByRegion(String regionName) {
-        Optional<Region> regionOptional = regionRepository.findRegionByName(regionName);
-        return regionOptional.map(region -> List.of(createPinInfo(pinRepository.findPinByRegion(region))))
-                .orElseGet(List::of);
+        List<Region> regionList = regionRepository.findRegionsByName(regionName.trim());
+        return regionList.stream()
+                .map(pinRepository::findPinByRegion)
+                .map(this::createPinInfo)
+                .toList();
     }
 
     private List<PinInfo> getPinListByClimate(ClimateProblem climateProblem) {
