@@ -66,11 +66,11 @@ spring:
   config:
     activate:
       on-profile: db-prod
-    datasource:
-      url: ${PROD_DB_URL}
-      username: ${PROD_DB_USER}
-      password: ${PROD_DB_PASSWORD}
-      driver-class-name: com.mysql.cj.jdbc.Driver
+  datasource:
+    url: ${PROD_DB_URL}
+    username: ${PROD_DB_USER}
+    password: ${PROD_DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
