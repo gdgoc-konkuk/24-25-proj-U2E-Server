@@ -129,6 +129,8 @@ public class NewsInitializer {
     );
 
     public void initializeNews() {
+        if (newsRepository.count() > 0) return;
+
         for (int i = 0; i < titles.size(); i++) {
             News news = News.builder()
                     .newsUrl(urls.get(i))

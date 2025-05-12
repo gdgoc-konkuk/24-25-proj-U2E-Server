@@ -75,6 +75,8 @@ public class RegionPinInitializer {
     );
 
     public void initializeRegionsAndPins() {
+        if (pinRepository.count() > 0 && regionRepository.count() > 0 && newsPinRepository.count() > 0) return;
+
         List<News> newsList = newsInitializer.getNewsList();
 
         Map<String, Region> regionMap = new java.util.HashMap<>();
