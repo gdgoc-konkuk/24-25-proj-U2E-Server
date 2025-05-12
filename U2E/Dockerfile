@@ -1,5 +1,5 @@
 FROM amazoncorretto:21
-EXPOSE 8000
+EXPOSE 9000
 COPY ./build/libs/*.jar ./app.jar
 
 ENV SPRING_PROFILES_ACTIVE=prod
