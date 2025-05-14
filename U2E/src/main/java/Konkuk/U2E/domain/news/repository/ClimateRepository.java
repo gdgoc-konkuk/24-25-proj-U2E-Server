@@ -16,4 +16,9 @@ public interface ClimateRepository extends JpaRepository<Climate, Long> {
 
     @Query("SELECT c.news FROM Climate c WHERE c.climateProblem = :climateProblem")
     List<News> findNewsByClimateProblem(@Param("climateProblem") ClimateProblem climateProblem);
+
+    @Query("SELECT CASE WHEN COUNT(c) > 0 THEN true ELSE false END " +
+            "FROM Climate c WHERE c.news = :news AND c.climateProblem = :climateProblem")
+    boolean existsByNewsAndClimateProblem(@Param("news") News news,
+                                          @Param("climateProblem") ClimateProblem climateProblem);
 }
