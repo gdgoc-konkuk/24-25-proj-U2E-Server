@@ -77,7 +77,7 @@ public class PinListService {
         return climateRepository.findNewsByClimateProblem(climateProblem).stream()
                 .map(newsPinRepository::findPinsByNews)
                 .flatMap(pinList -> pinList.stream()
-                            .map(this::createPinInfo)
+                            .map(pin -> this.createPinInfo(pin, climateProblem))
                 ).distinct()
                 .toList();
     }
@@ -93,13 +93,31 @@ public class PinListService {
                 .toList();
     }
 
-    public PinInfo createPinInfo(Pin pin) {
+    private PinInfo createPinInfo(Pin pin) {
         List<News> newsList = newsPinRepository.findNewsByPinId(pin.getPinId());
         if (newsList.isEmpty()) {   // 뉴스가 없는 핀은 존재할 수 없으므로 예외처리
             throw new PinNewsNotFoundException(PINNEWS_NOT_FOUND);
         }
 
         News latestNews = dateUtil.getLatestNews(newsList);
+        boolean isLately = dateUtil.checkLately(latestNews.getNewsDate());
+
+        List<ClimateProblem> climateProblems = climateRepository.findClimatesByNews(latestNews).stream()
+                .map(Climate::getClimateProblem)
+                .toList();
+        return PinInfo.of(pin, pin.getRegion(), isLately, climateProblems);
+    }
+
+    private PinInfo createPinInfo(Pin pin, ClimateProblem climateProblem) {
+        List<News> newsList = newsPinRepository.findNewsByPinId(pin.getPinId());
+        if (newsList.isEmpty()) {   // 뉴스가 없는 핀은 존재할 수 없으므로 예외처리
+            throw new PinNewsNotFoundException(PINNEWS_NOT_FOUND);
+        }
+
+        News latestNews = dateUtil.getLatestNews(
+                newsList.stream()
+                .filter(news -> climateRepository.existsByNewsAndClimateProblem(news, climateProblem)).toList()     //사용자가 필터링을 요청한 ClimateProblem을 포함하지 않는 경우 제거
+        );
         boolean isLately = dateUtil.checkLately(latestNews.getNewsDate());
 
         List<ClimateProblem> climateProblems = climateRepository.findClimatesByNews(latestNews).stream()
